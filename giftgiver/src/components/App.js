@@ -17,13 +17,21 @@ class App extends Component {
     this.setState({ gifts })
   }
 
+  removeGift = id => {
+    const gifts = this.state.gifts.filter(gift => gift.id !== id)
+
+    this.setState({ gifts })
+  }
+
   render() {
     const { gifts } = this.state
     return (
       <div>
         <h2>Gift Giver</h2>
         <div className="gift-list">
-          {gifts.map(gift => <Gift key={gift.id} />)}
+          {gifts.map(gift => (
+            <Gift key={gift.id} gift={gift} removeGift={this.removeGift} />
+          ))}
         </div>
         <Button className="btn-add" onClick={this.addGift}>
           Add Gift

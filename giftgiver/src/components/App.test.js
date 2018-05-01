@@ -16,7 +16,9 @@ describe('App', () => {
     expect(app.state().gifts).toEqual([])
   })
 
-  describe('when clicking the `add-gift` button', () => {
+  describe('when clicking the `Add Gift` button', () => {
+    const id = 1
+
     beforeEach(() => {
       // find inner child nodes or components, by JSX tag or classname
       app.find('.btn-add').simulate('click')
@@ -25,7 +27,7 @@ describe('App', () => {
       app.setState({ gifts: [] })
     })
     it('adds a new gift to `state`', () => {
-      expect(app.state().gifts).toEqual([{ id: 1 }])
+      expect(app.state().gifts).toEqual([{ id }])
     })
 
     it('adds a new gift to the rendered list', () => {
@@ -35,6 +37,17 @@ describe('App', () => {
     it('creates a gift component', () => {
       // find a JSX tag called 'Gift'
       expect(app.find('Gift').exists()).toBe(true)
+    })
+
+    describe('and then user wants to remove the added gift', () => {
+      beforeEach(() => {
+        // gain access to methods that app contains
+        app.instance().removeGift(id)
+      })
+
+      it('removes the gift from `state`', () => {
+        expect(app.state().gifts).toEqual([])
+      })
     })
   })
 })
