@@ -19,6 +19,12 @@ class Gift extends Component {
     })
   }
 
+  handlePresentChange = e => {
+    this.setState({
+      present: e.target.value,
+    })
+  }
+
   render() {
     return (
       <div>
@@ -28,6 +34,13 @@ class Gift extends Component {
             <FormControl
               className="input-person"
               onChange={this.handlePersonChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Present</ControlLabel>
+            <FormControl
+              className="input-present"
+              onChange={this.handlePresentChange}
             />
           </FormGroup>
         </Form>
