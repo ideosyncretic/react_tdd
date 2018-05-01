@@ -10,4 +10,13 @@ it('renders correctly', () => {
 })
 
 // backticks indicate that state is a special object or variable
-it('initialises the `state` with an empty list')
+it('initialises the `state` with an empty list of gifts', () => {
+  expect(app.state().gifts).toEqual([])
+})
+
+it('adds a new gift to `state` when clicking the `add gift` button', () => {
+  // find inner child nodes or components, by JSX tag or classname
+  app.find('.btn-add').simulate('click')
+
+  expect(app.state().gifts).toEqual([{ id: 1 }])
+})
