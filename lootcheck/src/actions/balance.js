@@ -1,8 +1,16 @@
-import * as constants from './constants'
+import * as types from './types'
 
-export const setBalance = balance => {
-  return {
-    type: constants.SET_BALANCE,
-    balance,
-  }
-}
+export const setBalance = balance => ({
+  type: types.SET_BALANCE,
+  balance,
+})
+
+export const deposit = deposit => ({
+  type: types.DEPOSIT,
+  deposit,
+})
+
+export const withdraw = withdrawal => ({
+  type: types.WITHDRAW,
+  withdrawal,
+})
